@@ -1,3 +1,9 @@
+@mixin fontsetting {
+    font-family: 'Diphylleia', sans-serif;
+    font-size: "22px";
+    line-height: 1.8;
+}
+
 li {
     list-style: none;
 }
@@ -5,7 +11,7 @@ li {
 .contact {
     margin: 0;
     padding: 0;
-
+    @include fontsetting;
 }
 
 // @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
