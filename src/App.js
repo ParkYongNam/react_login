@@ -3,11 +3,14 @@ import './App.css'
 function App() {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
-    const [emailinfo, emailupdate] = useState("");
-    const [pwinfo, pwinfoupdate] = useState("");
+    const [emailinfo, emailupdate] = useState({
+      email : "",
+      password: "",
+    });
+    
 
     const submitClick = () => {
-        alert(`아이디는 ${emailinfo}이고 패스워드는 ${pwinfo}로 기입하셨습니다.`)
+        alert(`아이디는 ${emailinfo.email}이고 패스워드는 ${emailinfo.password}로 기입하셨습니다.`)
     }
 
 
@@ -21,9 +24,12 @@ function App() {
                             Email
                         </label><br />
                         <input type="text" required name='email'
-                            value={emailinfo} ref={emailRef}
+                            value={emailinfo.email} ref={emailRef}
                             onChange={(e) => {
-                                emailupdate(e.target.value);
+                                emailupdate({
+                                  email : e.target.value,
+                                  password: "",
+                                });
                                 console.log(emailRef.current.value)
                             }} />
                     </li>
@@ -31,7 +37,11 @@ function App() {
                         <label htmlFor="password">
                             Password
                         </label><br />
-                        <input type="password" name='password' value={pwinfo} required ref={passwordRef} onChange={(e) => { pwinfoupdate(e.target.value) }} />
+                        <input type="password" name='password' value={emailinfo.password} required ref={passwordRef}
+                         onChange={(e) => { emailupdate({
+                            email: "",
+                            password: e.target.value,
+                         }) }} />
                     </li>
                 </ul>
                 <button type='submit' onClick={submitClick}>submit</button>
